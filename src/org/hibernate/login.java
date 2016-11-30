@@ -9,12 +9,7 @@ import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="login")
-@SecondaryTables({
-    @SecondaryTable(name="post", pkJoinColumns={
-        @PrimaryKeyJoinColumn(name="mob", referencedColumnName="mob") }),
-    
-})
+
 
 public class login {
 	

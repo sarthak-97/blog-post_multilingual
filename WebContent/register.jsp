@@ -11,13 +11,14 @@
 <title>Insert title here</title>
 </head>
 
-<body><div id="google_translate_element"></div><script type="text/javascript">
+<body><br><div id="google_translate_element"></div><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><br>
 
-<form action="resp" method="get">
+
+<form action=resp method=post>
 
 enter the mobile number<input type=text name="t1" ><input type=submit>
 

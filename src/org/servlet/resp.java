@@ -37,16 +37,17 @@ public class resp extends HttpServlet {
 
 		       Query queryResult = session.createQuery("from login");
 		       java.util.List allUsers;
-		       String pa,na;
+		       String pa;
 		       
 		       allUsers = queryResult.list();
 		       int f;
 		       f=0;
-		       for (int i = 0; i < allUsers.size(); i++) {
+		       for (int i = 1; i < allUsers.size(); i++) {
 		        login user = (login) allUsers.get(i);
 		        pa=user.getmob();
 		        
-		        if(mob.equals(pa)){
+		        System.out.println(pa);
+		        if(mob.equals(pa) ){
 		         f=1;
 		         break; 
 		         }
@@ -59,8 +60,7 @@ public class resp extends HttpServlet {
 		       session.save(user);
 		       session.getTransaction().commit();
 		       session.close(); 
-		       user=null;
-		       System.out.println(mob);
+		    		       System.out.println(mob);
 		       response.sendRedirect("home.html");
 		       
 

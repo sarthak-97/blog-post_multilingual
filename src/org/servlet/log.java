@@ -15,6 +15,7 @@ import org.hibernate.login;
 import org.hibernate.cfg.Configuration;
 
 
+
 /**
  * Servlet implementation class log
  */
@@ -34,33 +35,46 @@ public class log extends HttpServlet {
 	    
 			String mob=request.getParameter("t1");
 			  
-		       Query queryResult = session.createQuery("from login");
+		       Query queryResult = session.createQuery("from login ");
 		       java.util.List allUsers;
-		       String pa,na;
+		       String pa;
+		       int na;
 		       int f;
 		       f=0;
 		       
 		       allUsers = queryResult.list();
 		       System.out.println(allUsers.size());
-		       for (int i = 0; i < allUsers.size(); i++) {
-		       login user = (login) allUsers.get(i);
-		        pa=user.getmob();
-		        if( pa.equals(mob))
+		       for (int i = 0; i  < allUsers.size() ; i++) {
+		      login user = (login) allUsers.get(i);
+		      pa=user.getmob(); 
+		      na=user.getM();
+		      System.out.println(pa);
+		      if( pa.equals(mob) && na==0)
 		        {
-		        	System.out.println("welcom");
-		        	response.setContentType("text/html");
-				       request.setAttribute("t2", mob);
-				       request.getRequestDispatcher("/wall.jsp").forward(request, response);
-
-		        	break; 
-		        }
-		        else{
+		    	  System.out.println("welcom");
+		            f=1;
 		        	
-		        	response.setContentType("text/html");
-				       
-				       request.getRequestDispatcher("/home.html").forward(request, response);
-		        	System.out.println("no record");
-		        }
+		        	break; 
+		        
 	}
-	}}
+	}
+		     
+		       if(f==1)
+		       {
+		    	   response.setContentType("text/html");
+			       request.setAttribute("t2", mob);
+			       request.getRequestDispatcher("/wall.jsp").forward(request, response);
+
+		       }    	       else
+		       {
+		    	   response.sendRedirect("home.html");
+		       }
+		       
+		     
+		       session.getTransaction().commit();
+		       session.close();
+		       
+		}
+	}
+
 
